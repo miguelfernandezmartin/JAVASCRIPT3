@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #titulo {
+            color: green;
+            background-color: yellow;
+            border: 2px solid green;
+            font-size: 5em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ejercicios JS</h1>
+    <button onclick="calculaMedia()">Media</button>
+    <button onclick="multiploSiete()">Múltiplo de Siete</button>
+    <button onclick="edades()">Edades</button>
+    <button onclick="diaDeLaSemana()">Dia de la semana</button>
+    <button onclick="pintaUsuario()">Pinta Usuario</button>
+    <button onclick="cambiaColor()">Cambiar Color</button>
+    <button onclick="cambiaTitulo()">Cambiar Titulo</button>
+    <button onclick="pintaDiv()">Pintar Div</button>
+    <h1 id="titulo"></h1>
+    <h1 id="titulo2">Titulo Original</h1>
+    <div id="capa">
+        <label for="select">Color</label>
+        <select name="color" id="select">
+            <option value="red">Rojo</option>
+            <option value="green">Verde</option>
+            <option value="yellow">Amarillo</option>
+            <option value="blue">Azul</option>
+        </select>
+    </div>
+    <script>
+        function calculaMedia() {
+            let n1;
+            while (isNaN(n1) || !n1) {
+                n1 = prompt("Dime el 1er num")
+            }
+            let n2 = prompt("Dime el 2do num")
+            let n3 = prompt("Dime el 3er num")
+            let n4 = prompt("Dime el 4to num")
+            media = (Number(n1) + Number(n2) + Number(n3) + Number(n4)) / 4;
+            alert('La media es '+ media);
+        }
+
+        function multiploSiete() {
+            let num = prompt("Dime un número")
+            if (num % 7 == 0) {
+                alert(num + ' es mútiplo de 7')
+            } else {
+                alert(num + ' no es mútiplo de 7')
+            }
+        }
+
+        function edades() {
+            let nom1 = prompt('Dime tu nombre');
+            let edad1 = prompt('Dime tu edad');
+            let nom2 = prompt('Dime tu nombre');
+            let edad2 = prompt('Dime tu edad');
+            if (edad1 > edad2) {
+                alert (nom1 + ' es mayor que ' + nom2)
+            } else if (edad1 < edad2) {
+                alert (nom2 + ' es mayor que ' + nom1)
+            } else {
+                alert (nom1 + " tiene la misma edad que " + nom2)
+            }
+        
+        }
+
+        function diaDeLaSemana() {
+            let semana = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo'];
+            let dia;
+            while (dia < 1 || dia > 7 || isNaN(dia)) {
+                dia = prompt("Dime un día de la semana");
+            }
+            alert("El día de la semana es " + semana[dia-1]);
+        }
+
+        function pintaUsuario() {
+            let titulo = document.getElementById("titulo");
+            let usuario = prompt("Nombre del usuario");
+            titulo.innerHTML = usuario;
+        }
+
+        function cambiaColor() {
+            let titulo = document.getElementById("titulo");
+            titulo.style.color = "red";
+        }
+
+        function cambiaTitulo() {
+            let titulo = document.getElementById("titulo2");
+            titulo2.style.fontSize="50px";
+            titulo2.style.backgroundColor = "yellow";
+            titulo2.innerHTML = "Botón pulsado";
+        }
+
+        function pintaDiv() {
+            let select = document.getElementById("select");
+            let div = document.getElementById("capa");
+            div.style.backgroundColor = select.value;
+        }
+    </script>
+</body>
+
+</html>
