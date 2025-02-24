@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos</title>
+    <style>
+        #foto {
+            width: 200px;
+            height: 200px;
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Pedidos</h1>
+    <form action="procesa-pedido.php" onsubmit="return validaFormulario()">
+        <label for="producto"></label>
+        <select name="" id="producto" onchange="muestraProducto()">
+            <option value="">Elija producto</option>
+            <option value="ord">Ordenador</option>
+            <option value="port">Portátil</option>
+            <option value="tab">Tablet</option>
+        </select>
+        <img src="" alt="" id="foto">
+        <input type="submit" value="Hacer pedido">
+    </form>
+    <script>
+        function muestraProducto() {
+            const producto = document.getElementById("producto").value;
+            if (producto == "") {
+                document.getElementById("foto").style.visibility = "hidden";
+            } else {
+                document.getElementById("foto").style.visibility = "visible";
+            }
+            if (producto == "ord") {
+                document.getElementById("foto").src = "images/ordenador.webp";
+            }
+            if (producto == "port") {
+                document.getElementById("foto").src = "images/portatil.jpg";
+            }
+            if (producto == "tab") {
+                document.getElementById("foto").src = "images/tablet.jpg";
+            }
+        }
+
+        function validaFormulario() {
+            if (document.getElementById("producto").value == "") {
+                alert("Debe elegir un producto.")
+                return false;
+            }
+            alert("Procedemos a hacer el pedido.")
+            return true;
+        }
+    </script>
+    <br>
+    <hr>
+    <br>
+    <h1>Ejercicio 10</h1>
+    <form action="registra-usuario.php" onsubmit="return validaFormularioEj10()">
+        <p>
+            <label for="usuario">Usuario</label>
+            <input type="text" name="usuario" id="usuario">
+        </p>
+        <p>
+            <label for="acepto">He leído y acepto las condiciones</label>
+            <input type="checkbox" name="acepto" id="acepto">
+        </p>
+        <p>
+            <input type="submit" value="Registrar Usuario">
+        </p>
+    </form>
+    <script>
+        function validaFormularioEj10() {
+            if (document.getElementById("usuario").value.length < 5) {
+                alert("El usuario debe tener al menos 5 caracteres");
+                return false;
+            }
+
+            if (!document.getElementById("acepto").checked) {
+                alert("Debe aceptar las condiciones")
+                return false;
+            }
+            return true;
+        }
+    </script>
+    <br>
+    <hr>
+    <br>
+    <h1>Ejercicio 11</h1>
+    <form action="solicitar-prestamos.php" onsubmit=" return validaFormularioEj11()">
+        <p>
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre">
+        </p>
+        <p>
+            <label for="importe">Importe a solicitar</label>
+            <input type="number" name="importe" id="importe">
+        </p>
+        <p>
+            <label for="edad">Edad</label>
+            <input type="number" name="edad" id="edad">
+        </p>
+        <p>
+            <label for="sit-laboral">Situación laboral</label>
+            <select name="sit-laboral" id="sit-laboral">
+                <option value="">Elija una</option>
+                <option value="act">En activo</option>
+                <option value="des">Desempleado</option>
+                <option value="jub">Jubilado</option>
+            </select>
+        </p>
+        <p>
+            <input type="submit" value="Enviar" id="">
+        </p>
+    </form>
+    <h3 id="errorMsg"></h3>
+    <script>
+        function validaFormularioEj11() {
+            let mensajeError = document.getElementById("errorMsg");
+            if (document.getElementById("nombre").value == "") {
+                mensajeError.innerHTML = "El nombre no puede estar vacío."
+                mensajeError.style.color = "red";
+                mensajeError.style.fontWeight = "bold";
+                return false;
+            }
+
+            if (Number(document.getElementById("importe").value) < 10000) {
+                mensajeError.innerHTML = "El importe no puede ser menor que 10000."
+                mensajeError.style.color = "red";
+                mensajeError.style.fontWeight = "bold";
+                return false;
+            }
+
+            if (Number(document.getElementById("edad").value) >= 65) {
+                mensajeError.innerHTML = "La edad no puede ser mayor de 65 años."
+                mensajeError.style.color = "red";
+                mensajeError.style.fontWeight = "bold";
+                return false;
+            }
+
+            if (document.getElementById("sit-laboral").value == "") {
+                mensajeError.innerHTML = "Debes elegir una situación laboral."
+                mensajeError.style.color = "red";
+                mensajeError.style.fontWeight = "bold";
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+
+</html>
